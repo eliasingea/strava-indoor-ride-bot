@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "indoor-rides"
+version = "0.1.0"
+description = "Fix distance on Garmin indoor rides before they reach Strava, via a Discord prompt."
+requires-python = ">=3.12"
+dependencies = [
+    "garmin-connect-personal-api-python>=1.0",
+    "garmin-fit-sdk>=21.218",
+    "discord.py>=2.4",
+    "python-dotenv>=1.0",
+    "requests>=2.31",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+indoor-rides = "indoor_rides.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src", "."]
